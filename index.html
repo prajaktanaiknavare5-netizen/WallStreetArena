@@ -1,0 +1,1386 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WALL STREET ARENA | PCCOE Dept of Computer Engineering & ACM-W</title>
+  
+  <!-- Meta tags for social and SEO -->
+  <meta name="description" content="WALL STREET ARENA — The Premier High-Stakes Finance, Trading & Quantitative Strategy Arena organized by PCET's PCCOE Department of Computer Engineering & ACM-W. Prize Pool: ₹10K+ Worth.">
+  <meta name="theme-color" content="#040507">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold: {
+              300: '#fef08a',
+              400: '#ffd700',
+              500: '#d4af37',
+              600: '#b38728',
+              700: '#875c0c',
+              800: '#5e4007',
+            },
+            market: {
+              green: '#00e676',
+              red: '#ff3366',
+            },
+            slateDark: '#080a0e',
+            obsidian: '#040507'
+          },
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            cormorant: ['Cormorant Garamond', 'serif'],
+            montserrat: ['Montserrat', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,700&family=JetBrains+Mono:wght@400;500;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-obsidian text-gray-200 antialiased selection:bg-amber-500/30 selection:text-amber-300">
+
+  <!-- =========================================================================
+       TOP GLOBAL EMERGENCY MARKET TICKER TAPE
+       ========================================================================= -->
+  <div class="fixed top-0 left-0 w-full z-50 bg-[#05070a]/95 backdrop-blur-md border-b border-gold-500/25 text-xs font-mono h-8 flex items-center select-none overflow-hidden">
+    <div class="px-3 bg-amber-500/10 border-r border-gold-500/30 text-gold-400 font-bold tracking-wider flex items-center gap-1.5 shrink-0 z-10">
+      <span class="w-2 h-2 rounded-full bg-market-green animate-ping"></span>
+      <span class="hidden sm:inline">LIVE FLOOR</span>
+      <span class="text-[10px] text-gray-400 font-normal">OCT 10</span>
+    </div>
+
+    <!-- Continuous Scrolling Marquee -->
+    <div class="ticker-wrap flex-1">
+      <div id="ticker-track-1" class="ticker-move">
+        <!-- Injected dynamically via main.js -->
+        <span class="px-4 text-gray-400">Loading High-Frequency Market Feed...</span>
+      </div>
+    </div>
+
+    <!-- Quick Audio Ambient Floor Toggle -->
+    <button id="audio-toggle-btn" class="px-3 h-full bg-[#080b10] border-l border-gold-500/30 text-gray-400 hover:text-gold-400 transition-colors flex items-center gap-1.5 shrink-0" title="Toggle Wall Street Trading Floor Ambience">
+      <div id="sound-bars" class="flex items-end gap-0.5 h-3 opacity-40 transition-opacity">
+        <span class="w-0.5 h-1.5 bg-gold-400"></span>
+        <span class="w-0.5 h-3 bg-gold-400"></span>
+        <span class="w-0.5 h-2 bg-gold-400"></span>
+      </div>
+      <span id="sound-status-label" class="text-[10px] font-bold tracking-wider hidden md:inline">AUDIO: OFF</span>
+    </button>
+  </div>
+
+  <!-- =========================================================================
+       STICKY EXECUTIVE NAVIGATION BAR
+       ========================================================================= -->
+  <nav id="main-nav" class="fixed top-8 left-0 w-full z-40 transition-all duration-300 bg-transparent py-3 px-4 md:px-8 border-b border-transparent">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      
+      <!-- Brand & Institutional Affiliation -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <!-- Institutional Logos from Poster -->
+        <div class="flex items-center gap-1.5 py-1 px-2 rounded-lg bg-black/40 border border-gold-500/20 backdrop-blur-sm">
+          <img src="assets/images/pccoe-logo.png" alt="PCCOE Logo" class="h-8 md:h-9 object-contain" />
+          <div class="h-6 w-[1px] bg-gold-500/30"></div>
+          <img src="assets/images/acmw-logo.png" alt="ACM-W PCCOE" class="h-7 md:h-8 object-contain" />
+          <div class="h-6 w-[1px] bg-gold-500/30"></div>
+          <img src="assets/images/cesa-logo.png" alt="CESA Logo" class="h-6 md:h-7 object-contain" />
+        </div>
+
+        <div class="hidden lg:block text-left">
+          <div class="font-cinzel font-black tracking-widest text-sm text-gold-400 leading-none group-hover:text-gold-300 transition-colors">
+            WALL STREET
+          </div>
+          <div class="text-[9px] tracking-[0.25em] text-gray-400 uppercase font-mono mt-0.5">
+            ARENA 2026
+          </div>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Items -->
+      <div class="hidden md:flex items-center space-x-7 text-xs font-semibold tracking-widest uppercase font-montserrat">
+        <a href="#hero" class="text-gray-300 hover:text-gold-400 transition-colors py-1">Home</a>
+        <a href="#arena" class="text-gray-300 hover:text-gold-400 transition-colors py-1">The Arena</a>
+        <a href="#format" class="text-gray-300 hover:text-gold-400 transition-colors py-1">Rounds</a>
+        <a href="#terminal" class="text-gray-300 hover:text-gold-400 transition-colors py-1">Terminal</a>
+        <a href="#stakes" class="text-gray-300 hover:text-gold-400 transition-colors py-1">Prizes</a>
+        <a href="#details" class="text-gray-300 hover:text-gold-400 transition-colors py-1">Details</a>
+        <a href="#faq" class="text-gray-300 hover:text-gold-400 transition-colors py-1">FAQ</a>
+      </div>
+
+      <!-- Actions CTA & Mobile Toggle -->
+      <div class="flex items-center gap-3">
+        <a href="#register" class="btn-gold-luxury px-5 py-2 rounded-md font-montserrat text-xs font-bold tracking-widest uppercase inline-flex items-center gap-2">
+          <span>REGISTER NOW</span>
+          <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 text-gold-400"></i>
+        </a>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button id="mobile-toggle" class="md:hidden p-2 text-gold-400 hover:text-gold-300 focus:outline-none" aria-label="Toggle Navigation">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden mt-3 pt-4 pb-6 px-4 bg-[#07090e]/95 border-b border-gold-500/30 backdrop-blur-xl rounded-b-2xl shadow-2xl space-y-3 font-montserrat text-sm font-semibold tracking-wider uppercase">
+      <a href="#hero" class="block py-2 text-gray-300 hover:text-gold-400 border-b border-white/5">Home</a>
+      <a href="#arena" class="block py-2 text-gray-300 hover:text-gold-400 border-b border-white/5">The Arena</a>
+      <a href="#format" class="block py-2 text-gray-300 hover:text-gold-400 border-b border-white/5">Event Format</a>
+      <a href="#terminal" class="block py-2 text-gray-300 hover:text-gold-400 border-b border-white/5">Trading Terminal</a>
+      <a href="#stakes" class="block py-2 text-gray-300 hover:text-gold-400 border-b border-white/5">₹10K+ Stakes</a>
+      <a href="#details" class="block py-2 text-gray-300 hover:text-gold-400 border-b border-white/5">Event Logistics</a>
+      <a href="#faq" class="block py-2 text-gray-300 hover:text-gold-400 border-b border-white/5">FAQ & Contact</a>
+      <div class="pt-2">
+        <a href="#register" class="block text-center py-2.5 btn-gold-solid rounded-md font-bold text-xs tracking-widest uppercase">
+          REGISTER SYNDICATE
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =========================================================================
+       HERO SECTION: THE MIDNIGHT TRADING FLOOR
+       ========================================================================= -->
+  <header id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 overflow-hidden">
+    
+    <!-- Cinematic Hero Image Background -->
+    <div class="absolute inset-0 z-0">
+      <img src="assets/images/hero-bg.jpg" alt="Wall Street Trading Floor At Night" class="w-full h-full object-cover object-center scale-105 filter brightness-[0.42] contrast-125" />
+      
+      <!-- Deep Vignette & Radial Dark Gradients -->
+      <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/75 to-transparent"></div>
+      <div class="absolute inset-0 bg-radial-gradient from-transparent via-obsidian/60 to-obsidian"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/10 via-transparent to-transparent"></div>
+    </div>
+
+    <!-- Floating Currency & Gold Embers Canvas Layer -->
+    <canvas id="hero-canvas" class="z-10"></canvas>
+
+    <!-- Hero Content Container -->
+    <div class="relative z-20 max-w-6xl mx-auto px-4 text-center mt-6">
+
+      
+      <!-- Institutional Top Header -->
+      <div class="inline-flex flex-col items-center mb-6">
+        <div class="text-[10px] sm:text-xs md:text-sm tracking-[0.3em] uppercase text-gold-400 font-montserrat font-semibold">
+          PCET'S
+        </div>
+        <div class="text-xs sm:text-sm md:text-base font-cinzel tracking-[0.2em] font-bold text-gray-100 uppercase mt-0.5">
+          PIMPRI CHINCHWAD COLLEGE OF ENGINEERING
+        </div>
+        <div class="text-[11px] sm:text-xs tracking-[0.25em] text-gray-400 uppercase font-mono mt-0.5">
+          DEPARTMENT OF COMPUTER ENGINEERING
+        </div>
+        <div class="flex items-center gap-2 mt-2 text-[10px] tracking-widest text-gold-500/80 font-mono">
+          <span>ACM-W PCCOE STUDENT CHAPTER</span>
+          <span>•</span>
+          <span>CESA</span>
+        </div>
+        <div class="w-32 h-[1px] bg-gradient-to-r from-transparent via-gold-500/60 to-transparent mt-3"></div>
+      </div>
+
+      <!-- Main Monumental Title -->
+      <div class="relative my-3 select-none flex flex-col items-center justify-center">
+        <h1 class="wall-street-heading text-gold-emboss">
+          WALL <span class="title-dollar">$</span>TREET
+        </h1>
+        
+        <!-- Subtitle: — ARENA — -->
+        <div class="flex items-center justify-center gap-3 sm:gap-4 mt-2 sm:mt-3">
+          <div class="h-[1px] w-8 sm:w-16 md:w-28 bg-gradient-to-r from-transparent to-gold-500"></div>
+          <span class="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-cinzel font-bold tracking-[0.4em] uppercase text-gold-gradient">
+            ARENA
+          </span>
+          <div class="h-[1px] w-8 sm:w-16 md:w-28 bg-gradient-to-l from-transparent to-gold-500"></div>
+        </div>
+      </div>
+
+
+      <!-- Tagline -->
+      <p class="font-cormorant italic text-lg sm:text-2xl text-gray-300 max-w-2xl mx-auto mt-4 tracking-wide font-medium">
+        "Where Strategy Meets the Market. Master the Bull, Outsmart the Bear."
+      </p>
+
+      <!-- Key Badge Strip: Date, Venue, Prize, Team -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-3 max-w-3xl mx-auto mt-8 font-mono text-xs">
+        
+        <div class="luxury-card p-3 rounded-lg border border-gold-500/25 flex flex-col items-center justify-center">
+          <span class="text-gray-400 text-[10px] uppercase tracking-wider">DATE</span>
+          <span class="text-gold-300 font-bold text-sm tracking-wide mt-0.5 flex items-center gap-1">
+            <i data-lucide="calendar" class="w-3.5 h-3.5 text-gold-400"></i>
+            10 OCT 2026
+          </span>
+        </div>
+
+        <div class="luxury-card p-3 rounded-lg border border-gold-500/25 flex flex-col items-center justify-center">
+          <span class="text-gray-400 text-[10px] uppercase tracking-wider">VENUE</span>
+          <span class="text-gold-300 font-bold text-sm tracking-wide mt-0.5 flex items-center gap-1">
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-gold-400"></i>
+            LAB 6221L - 6222L
+          </span>
+        </div>
+
+        <div class="luxury-card p-3 rounded-lg border border-gold-500/25 flex flex-col items-center justify-center">
+          <span class="text-gray-400 text-[10px] uppercase tracking-wider">TEAM SIZE</span>
+          <span class="text-gold-300 font-bold text-sm tracking-wide mt-0.5 flex items-center gap-1">
+            <i data-lucide="users" class="w-3.5 h-3.5 text-gold-400"></i>
+            2 - 3 MEMBERS
+          </span>
+        </div>
+
+        <div class="luxury-card p-3 rounded-lg border border-gold-500/25 flex flex-col items-center justify-center bg-gradient-to-b from-amber-500/10 to-transparent">
+          <span class="text-amber-400 text-[10px] uppercase tracking-wider font-bold">PRIZE POOL</span>
+          <span class="text-market-green font-bold text-sm tracking-wide mt-0.5 flex items-center gap-1">
+            <i data-lucide="trophy" class="w-3.5 h-3.5 text-amber-400"></i>
+            ₹10K+ WORTH
+          </span>
+        </div>
+
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+        <a href="#register" class="btn-gold-solid w-full sm:w-auto px-8 py-3.5 rounded-lg font-montserrat text-sm font-extrabold tracking-widest uppercase flex items-center justify-center gap-2">
+          <span>ENTER THE ARENA — REGISTER NOW</span>
+          <i data-lucide="zap" class="w-4 h-4 text-black"></i>
+        </a>
+
+        <button class="open-poster-modal btn-gold-outline w-full sm:w-auto px-6 py-3.5 rounded-lg font-montserrat text-xs font-bold tracking-widest uppercase flex items-center justify-center gap-2">
+          <i data-lucide="image" class="w-4 h-4 text-gold-400"></i>
+          <span>VIEW OFFICIAL POSTER</span>
+        </button>
+      </div>
+
+      <!-- Live Countdown HUD -->
+      <div class="mt-10 pt-6 border-t border-gold-500/15 max-w-lg mx-auto">
+        <div class="text-[11px] font-mono uppercase tracking-[0.25em] text-gray-400 mb-3">
+          FLOOR OPENING COUNTDOWN
+        </div>
+        <div class="grid grid-cols-4 gap-2 text-center font-mono">
+          <div class="bg-black/60 border border-gold-500/30 rounded-lg p-2 shadow-inner">
+            <div id="cd-days" class="text-2xl sm:text-3xl font-bold text-gold-300">--</div>
+            <div class="text-[9px] uppercase tracking-widest text-gray-400">Days</div>
+          </div>
+          <div class="bg-black/60 border border-gold-500/30 rounded-lg p-2 shadow-inner">
+            <div id="cd-hours" class="text-2xl sm:text-3xl font-bold text-gold-300">--</div>
+            <div class="text-[9px] uppercase tracking-widest text-gray-400">Hours</div>
+          </div>
+          <div class="bg-black/60 border border-gold-500/30 rounded-lg p-2 shadow-inner">
+            <div id="cd-mins" class="text-2xl sm:text-3xl font-bold text-gold-300">--</div>
+            <div class="text-[9px] uppercase tracking-widest text-gray-400">Mins</div>
+          </div>
+          <div class="bg-black/60 border border-gold-500/30 rounded-lg p-2 shadow-inner">
+            <div id="cd-secs" class="text-2xl sm:text-3xl font-bold text-market-green">--</div>
+            <div class="text-[9px] uppercase tracking-widest text-gray-400">Secs</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Scroll Down Indicator -->
+    <a href="#quote-section" class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 text-gold-400/60 hover:text-gold-300 transition-colors animate-bounce">
+      <i data-lucide="chevron-down" class="w-6 h-6"></i>
+    </a>
+  </header>
+
+  <!-- =========================================================================
+       SECTION 2: THE WOLF'S CREED (POSTER QUOTE SHOWCASE)
+       ========================================================================= -->
+  <section id="quote-section" class="relative py-20 px-4 bg-gradient-to-b from-obsidian via-[#07090e] to-obsidian border-y border-gold-500/15 overflow-hidden">
+    
+    <!-- Atmospheric Gold Backdrop Glow -->
+    <div class="quote-backdrop absolute inset-0 pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-4xl mx-auto text-center">
+      
+      <!-- Visual Homage to Leonardo DiCaprio from Poster -->
+      <div class="flex justify-center mb-6">
+        <div class="relative p-1 rounded-full bg-gradient-to-b from-gold-400/50 to-transparent">
+          <div class="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden border-2 border-gold-500/60 bg-black shadow-[0_0_30px_rgba(212,175,55,0.3)]">
+            <img src="assets/images/leo-wolf.png" alt="Leonardo DiCaprio Wall Street" class="w-full h-full object-cover object-top scale-125 translate-y-1" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Quote Glyphs & Text -->
+      <div class="text-gold-500/40 text-4xl font-serif mb-2 select-none">“</div>
+      
+      <blockquote class="font-cormorant text-2xl sm:text-3xl md:text-4xl text-gray-100 font-medium tracking-wide uppercase leading-snug">
+        The only thing that matters in this world<br class="hidden sm:inline">
+        is how much money you make.
+      </blockquote>
+
+      <div class="mt-4 flex items-center justify-center gap-3">
+        <div class="w-8 h-[1px] bg-gold-500/50"></div>
+        <cite class="font-cinzel text-xs sm:text-sm tracking-[0.25em] text-gold-400 uppercase font-bold not-italic">
+          — LEONARDO DICAPRIO
+        </cite>
+        <div class="w-8 h-[1px] bg-gold-500/50"></div>
+      </div>
+
+      <p class="font-mono text-xs text-gray-500 mt-2 tracking-widest uppercase">
+        THE WOLF OF WALL STREET AESTHETIC • HIGH-STAKES FINANCIAL COMPETITION
+      </p>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       SECTION 3: ABOUT THE EVENT — "THE ARENA"
+       ========================================================================= -->
+  <section id="arena" class="relative py-24 px-4 max-w-7xl mx-auto">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Left Column: Editorial Overview -->
+      <div class="lg:col-span-7 space-y-6">
+        
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-widest text-gold-400 uppercase bg-amber-500/10 px-3 py-1 rounded-full border border-gold-500/25">
+          <i data-lucide="trending-up" class="w-3.5 h-3.5"></i>
+          <span>QUANTITATIVE FINANCIAL COMBAT</span>
+        </div>
+
+        <h2 class="text-3xl sm:text-5xl font-extrabold font-cinzel uppercase text-gray-100 leading-tight">
+          THE ARENA
+        </h2>
+        
+        <p class="font-cormorant italic text-xl text-gold-300">
+          Where Wall Street ruthlessness meets computational engineering precision.
+        </p>
+
+        <div class="space-y-4 text-gray-300 text-sm leading-relaxed font-montserrat font-normal">
+          <p>
+            Welcome to <strong class="text-gold-300">WALL STREET ARENA</strong> — the flagship technical finance showdown organized by <strong class="text-gray-100">PCET's Pimpri Chinchwad College of Engineering (PCCOE) Department of Computer Engineering</strong> in association with <strong class="text-gray-100">ACM-W PCCOE</strong> and <strong class="text-gray-100">CESA</strong>.
+          </p>
+          <p>
+            Forget textbook exercises. This is a battleground engineered for real-time strategic problem solvers, quantitative analysts, algorithmic thinkers, and market strategists. Across two ruthless competitive rounds, syndicates will decrypt volatile macroeconomic scenarios, analyze high-speed tickers, construct winning portfolios, and execute tactical decisions under the clock.
+          </p>
+          <p class="text-xs text-gray-400 border-l-2 border-gold-500/60 pl-3 italic">
+            "You don't need a stockbroker's license to conquer the floor — you need numerical agility, nerves of steel, and razor-sharp synergy."
+          </p>
+        </div>
+
+        <!-- 4 Metric Cards as per specifications -->
+        <div id="stats-section" class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
+          
+          <div class="luxury-card p-4 rounded-xl border border-gold-500/25 text-center">
+            <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">ROUND 01</div>
+            <div class="text-xs font-bold text-gold-300 mt-1 uppercase font-cinzel">APTITUDE TEST</div>
+            <div class="text-[10px] font-mono text-market-green mt-1 font-semibold uppercase">ONLINE</div>
+          </div>
+
+          <div class="luxury-card p-4 rounded-xl border border-gold-500/25 text-center">
+            <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">ROUND 02</div>
+            <div class="text-xs font-bold text-gold-300 mt-1 uppercase font-cinzel">THE FINALE</div>
+            <div class="text-[10px] font-mono text-gold-400 mt-1 font-semibold uppercase">OFFLINE LAB</div>
+          </div>
+
+          <div class="luxury-card p-4 rounded-xl border border-gold-500/25 text-center">
+            <div class="text-[10px] font-mono text-gray-400 uppercase tracking-widest">TEAM SIZE</div>
+            <div class="text-lg font-bold text-gray-100 mt-0.5 font-mono">2 - 3</div>
+            <div class="text-[10px] font-mono text-gray-400 uppercase">MEMBERS</div>
+          </div>
+
+          <div class="luxury-card p-4 rounded-xl border border-gold-500/25 text-center bg-gradient-to-b from-amber-500/15 to-transparent">
+            <div class="text-[10px] font-mono text-amber-400 uppercase tracking-widest">PRIZE POOL</div>
+            <div class="text-base font-bold text-market-green mt-0.5 font-mono">₹10,000+</div>
+            <div class="text-[10px] font-mono text-gold-400 uppercase font-semibold">WORTH CASH</div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Right Column: The Iconic Golden Bull Sculpture -->
+      <div class="lg:col-span-5 relative flex justify-center">
+        <div class="relative w-full max-w-md group">
+          
+          <!-- Outer Gold Framing -->
+          <div class="absolute -inset-1.5 rounded-2xl bg-gradient-to-tr from-gold-600 via-gold-400 to-gold-700 opacity-30 group-hover:opacity-60 transition duration-500 blur-sm"></div>
+          
+          <div class="relative rounded-2xl overflow-hidden border border-gold-500/40 bg-black shadow-2xl">
+            <img src="assets/images/golden-bull.jpg" alt="The Wall Street Charging Bull" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" />
+            
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+            
+            <div class="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-black/80 backdrop-blur-md border border-gold-500/30">
+              <div class="flex items-center justify-between">
+                <div>
+                  <div class="font-cinzel text-xs font-bold text-gold-300 tracking-wider">WALL STREET SYMBOL</div>
+                  <div class="text-[11px] text-gray-400 font-mono">The Charging Bull • Relentless Market Momentum</div>
+                </div>
+                <span class="text-xs font-mono font-bold text-market-green bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded">
+                  BULL RUN
+                </span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       SECTION 4: EVENT FORMAT & PROGRESSION TIMELINE
+       ========================================================================= -->
+  <section id="format" class="relative py-24 px-4 bg-[#06080c] border-y border-gold-500/15">
+    
+    <div class="max-w-5xl mx-auto">
+      
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <div class="text-xs font-mono uppercase tracking-[0.25em] text-gold-400 mb-2">
+          COMPETITION ROADMAP
+        </div>
+        <h2 class="text-3xl sm:text-5xl font-extrabold font-cinzel uppercase text-gray-100">
+          EVENT FORMAT
+        </h2>
+        <div class="w-24 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-4"></div>
+        <p class="font-cormorant italic text-lg text-gray-400 mt-3 max-w-xl mx-auto">
+          From preliminary screening to high-stakes offline live market combat.
+        </p>
+      </div>
+
+      <!-- Progression Timeline -->
+      <div class="relative space-y-12">
+        
+        <!-- Central Gold Stem Connector -->
+        <div class="timeline-stem"></div>
+
+        <!-- ROUND 01 CARD -->
+        <div class="relative flex flex-col md:flex-row items-center gap-8 group">
+          <div class="w-full md:w-1/2 md:text-right space-y-2 order-2 md:order-1">
+            <span class="inline-block px-3 py-1 rounded bg-amber-500/10 border border-gold-500/30 text-gold-400 font-mono text-xs font-bold tracking-wider">
+              PHASE 01 • SCREENING
+            </span>
+            <h3 class="text-2xl font-bold font-cinzel text-gray-100 group-hover:text-gold-300 transition-colors">
+              ROUND 1: APTITUDE TEST
+            </h3>
+            <p class="text-xs text-market-green font-mono font-semibold tracking-wider uppercase">
+              MODE: ONLINE PLATFORM
+            </p>
+            <p class="text-xs text-gray-400 font-montserrat leading-relaxed">
+              Test your quantitative aptitude, mathematical acumen, logical deductions, probability estimations, and foundational knowledge of financial markets and logic. Speed and accuracy determine your initial syndicate valuation.
+            </p>
+            <div class="flex flex-wrap gap-2 md:justify-end pt-2 text-[10px] font-mono text-gray-400">
+              <span class="px-2 py-0.5 rounded bg-black/60 border border-white/10">Quantitative Aptitude</span>
+              <span class="px-2 py-0.5 rounded bg-black/60 border border-white/10">Financial Reasoning</span>
+              <span class="px-2 py-0.5 rounded bg-black/60 border border-white/10">Time Trial</span>
+            </div>
+          </div>
+
+          <!-- Central Node -->
+          <div class="z-10 w-12 h-12 rounded-full bg-black border-2 border-gold-400 flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.4)] order-1 md:order-2 shrink-0 group-hover:scale-110 transition-transform">
+            <i data-lucide="target" class="w-6 h-6 text-gold-400"></i>
+          </div>
+
+          <div class="hidden md:block w-1/2 order-3">
+            <div class="luxury-card p-4 rounded-xl border border-gold-500/20 max-w-xs text-xs font-mono space-y-2">
+              <div class="text-gold-400 font-bold flex items-center justify-between">
+                <span>EVALUATION METRIC</span>
+                <span>ONLINE</span>
+              </div>
+              <div class="text-gray-400 text-[11px]">
+                Top qualifying syndicates automatically secure clearance for the physical trading floor finale.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRANSITION: QUALIFICATION CUTOFF -->
+        <div class="relative flex items-center justify-center my-6 z-10">
+          <div class="px-6 py-2 rounded-full bg-black border border-gold-500/50 shadow-[0_0_25px_rgba(212,175,55,0.25)] flex items-center gap-3">
+            <i data-lucide="arrow-down" class="w-4 h-4 text-gold-400 animate-bounce"></i>
+            <span class="font-cinzel text-xs font-extrabold tracking-[0.3em] text-gold-gradient uppercase">
+              QUALIFICATION CUTOFF
+            </span>
+            <i data-lucide="arrow-down" class="w-4 h-4 text-gold-400 animate-bounce"></i>
+          </div>
+        </div>
+
+        <!-- ROUND 02 CARD -->
+        <div class="relative flex flex-col md:flex-row items-center gap-8 group">
+          
+          <div class="hidden md:block w-1/2 text-right order-1">
+            <div class="luxury-card p-4 rounded-xl border border-gold-500/20 max-w-xs ml-auto text-xs font-mono space-y-2">
+              <div class="text-gold-400 font-bold flex items-center justify-between">
+                <span>VENUE: LAB 6221L - 6222L</span>
+                <span class="text-amber-300">HIGH NOON</span>
+              </div>
+              <div class="text-gray-400 text-[11px]">
+                Real-time dynamic news flashes, flash crashes, portfolio rebalancing, and live leaderboard projection.
+              </div>
+            </div>
+          </div>
+
+          <!-- Central Node -->
+          <div class="z-10 w-12 h-12 rounded-full bg-black border-2 border-gold-400 flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.4)] order-1 md:order-2 shrink-0 group-hover:scale-110 transition-transform">
+            <i data-lucide="trophy" class="w-6 h-6 text-gold-400"></i>
+          </div>
+
+          <div class="w-full md:w-1/2 space-y-2 order-2 md:order-3">
+            <span class="inline-block px-3 py-1 rounded bg-amber-500/10 border border-gold-500/30 text-gold-400 font-mono text-xs font-bold tracking-wider">
+              PHASE 02 • THE CLIMAX
+            </span>
+            <h3 class="text-2xl font-bold font-cinzel text-gray-100 group-hover:text-gold-300 transition-colors">
+              ROUND 2: THE FINALE
+            </h3>
+            <p class="text-xs text-gold-400 font-mono font-semibold tracking-wider uppercase">
+              MODE: OFFLINE @ PCCOE LAB 6221L - 6222L
+            </p>
+            <p class="text-xs text-gray-400 font-montserrat leading-relaxed">
+              Step into the simulated Wall Street trading floor. Qualified syndicates manage an active mock portfolio under high-speed market fluctuations, sudden economic breaking news, volatility shocks, and liquidity squeezes. The syndicate with highest risk-adjusted net worth claims the championship!
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2 text-[10px] font-mono text-gray-400">
+              <span class="px-2 py-0.5 rounded bg-black/60 border border-white/10">Dynamic Floor</span>
+              <span class="px-2 py-0.5 rounded bg-black/60 border border-white/10">Live Simulation</span>
+              <span class="px-2 py-0.5 rounded bg-black/60 border border-white/10">Crisis Management</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       SECTION 5: INTERACTIVE LIVE CANDLESTICK TERMINAL & SIMULATOR
+       ========================================================================= -->
+  <section id="terminal" class="relative py-24 px-4 max-w-7xl mx-auto">
+    
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-widest text-gold-400 uppercase bg-amber-500/10 px-3 py-1 rounded-full border border-gold-500/25 mb-2">
+        <i data-lucide="terminal" class="w-3.5 h-3.5"></i>
+        <span>PROPRIETARY TRADING DESK SIMULATOR</span>
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-extrabold font-cinzel uppercase text-gray-100">
+        THE TRADING TERMINAL
+      </h2>
+      <p class="font-cormorant italic text-lg text-gray-400 mt-2 max-w-xl mx-auto">
+        Test your instincts before the arena. Execute simulated orders on live synthetic ticks.
+      </p>
+    </div>
+
+    <!-- Terminal Window Container -->
+    <div class="luxury-card rounded-2xl overflow-hidden border-2 border-gold-500/35 shadow-2xl bg-[#07090e]">
+      
+      <!-- Terminal Header / Titlebar -->
+      <div class="bg-[#0c1017] px-4 py-3 border-b border-gold-500/20 flex flex-wrap items-center justify-between gap-3 text-xs font-mono">
+        <div class="flex items-center gap-3">
+          <div class="flex items-center gap-1.5">
+            <span class="w-3 h-3 rounded-full bg-red-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-500/80"></span>
+            <span class="w-3 h-3 rounded-full bg-green-500/80"></span>
+          </div>
+          <span class="font-bold text-gray-200 tracking-wider">WSA-DESK // CONTRACT: PCCOE/NIFTY-OCT26</span>
+          <span class="text-[10px] text-gray-500 hidden sm:inline">1M INTERVAL • LIVE TICKS</span>
+        </div>
+
+        <div class="flex items-center gap-4 text-[11px]">
+          <div>MARKET: <span class="text-market-green font-bold">ONLINE</span></div>
+          <div>SPREAD: <span class="text-gold-300 font-bold">0.05</span></div>
+          <div>LATENCY: <span class="text-gray-400">1.2ms</span></div>
+        </div>
+      </div>
+
+      <!-- Terminal Body: Chart + Order Controls -->
+      <div class="grid grid-cols-1 lg:grid-cols-12">
+        
+        <!-- Candlestick Chart Area (8 cols) -->
+        <div class="lg:col-span-8 p-4 border-b lg:border-b-0 lg:border-r border-gold-500/20 relative">
+          
+          <div class="flex items-center justify-between mb-2 text-xs font-mono">
+            <div class="flex items-center gap-3">
+              <span class="text-gray-400">CURRENT TICK:</span>
+              <span id="terminal-current-price" class="text-xl font-bold text-gold-300">₹2,450.00</span>
+            </div>
+            <div class="text-[11px] text-gray-400 flex items-center gap-2">
+              <span class="inline-block w-2.5 h-2.5 bg-gold-400"></span> MA(5)
+              <span class="inline-block w-2.5 h-2.5 bg-market-green ml-2"></span> BULL
+              <span class="inline-block w-2.5 h-2.5 bg-market-red ml-2"></span> BEAR
+            </div>
+          </div>
+
+          <div class="relative w-full chart-container rounded-lg">
+            <canvas id="marketChart" class="w-full block"></canvas>
+          </div>
+
+          <div class="flex items-center justify-between text-[10px] font-mono text-gray-500 mt-2 px-1">
+            <span>VOLUME INDICATOR (BOTTOM BARS)</span>
+            <span>SIMULATED FEED FOR WALL STREET ARENA</span>
+          </div>
+        </div>
+
+        <!-- Terminal Sidebar: Virtual Portfolio & Order Execution (4 cols) -->
+        <div class="lg:col-span-4 p-5 flex flex-col justify-between space-y-6 bg-[#0a0d14]">
+          
+          <!-- Virtual Account Stats -->
+          <div class="space-y-4">
+            <div class="text-xs font-mono uppercase tracking-widest text-gold-400 border-b border-gold-500/20 pb-2">
+              VIRTUAL TRADING DESK
+            </div>
+
+            <div class="grid grid-cols-2 gap-3 font-mono text-xs">
+              <div class="bg-black/50 p-2.5 rounded border border-white/5">
+                <div class="text-gray-400 text-[10px]">CASH BALANCE</div>
+                <div id="terminal-cash" class="text-sm font-bold text-gray-100 mt-0.5">₹1,00,000</div>
+              </div>
+
+              <div class="bg-black/50 p-2.5 rounded border border-white/5">
+                <div class="text-gray-400 text-[10px]">OPEN P&L</div>
+                <div id="terminal-pnl" class="text-sm font-bold text-market-green mt-0.5">+₹0.00</div>
+              </div>
+            </div>
+
+            <div class="bg-black/50 p-2.5 rounded border border-white/5 font-mono text-xs">
+              <div class="text-gray-400 text-[10px]">CURRENT HOLDINGS</div>
+              <div id="terminal-positions" class="text-sm font-bold text-gold-300 mt-0.5">0 Contracts</div>
+            </div>
+
+            <!-- Simulated Order Book (Level 2) -->
+            <div class="font-mono text-[11px] space-y-1 pt-1">
+              <div class="text-[10px] text-gray-400 uppercase tracking-wider flex justify-between">
+                <span>ORDER BOOK</span>
+                <span>VOL / QTY</span>
+              </div>
+              <div class="flex justify-between text-market-red">
+                <span>ASK: ₹2,458.20</span>
+                <span>450 lots</span>
+              </div>
+              <div class="flex justify-between text-market-red">
+                <span>ASK: ₹2,454.10</span>
+                <span>820 lots</span>
+              </div>
+              <div class="flex justify-between text-market-green">
+                <span>BID: ₹2,448.90</span>
+                <span>1,200 lots</span>
+              </div>
+              <div class="flex justify-between text-market-green">
+                <span>BID: ₹2,445.00</span>
+                <span>940 lots</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order Action Buttons -->
+          <div class="space-y-2 pt-4 border-t border-gold-500/20 font-montserrat">
+            <div class="grid grid-cols-2 gap-2">
+              <button id="btn-terminal-buy" class="py-2.5 px-3 rounded-lg bg-market-green/20 hover:bg-market-green text-market-green hover:text-black border border-market-green/50 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-lg">
+                <i data-lucide="trending-up" class="w-4 h-4"></i>
+                <span>BUY / LONG</span>
+              </button>
+              <button id="btn-terminal-sell" class="py-2.5 px-3 rounded-lg bg-market-red/20 hover:bg-market-red text-market-red hover:text-black border border-market-red/50 font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-1.5 shadow-lg">
+                <i data-lucide="trending-down" class="w-4 h-4"></i>
+                <span>SELL / SHORT</span>
+              </button>
+            </div>
+            
+            <button id="btn-terminal-close" class="w-full py-2 rounded-lg bg-gray-800/80 hover:bg-gray-700 text-gray-300 font-mono text-[11px] uppercase tracking-wider transition-colors border border-white/10">
+              SQUARE OFF POSITIONS
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       SECTION 6: PRIZE SECTION — "THE STAKES ARE HIGH."
+       ========================================================================= -->
+  <section id="stakes" class="relative py-24 px-4 bg-gradient-to-b from-obsidian via-[#090b10] to-obsidian border-y border-gold-500/20 overflow-hidden">
+    
+    <!-- Atmospheric gold particle rings -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(212,175,55,0.12)_0%,_transparent_70%)] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-5xl mx-auto text-center">
+      
+      <!-- Section Title -->
+      <div class="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-widest text-gold-400 uppercase bg-amber-500/10 px-3.5 py-1.5 rounded-full border border-gold-500/25 mb-4">
+        <i data-lucide="award" class="w-3.5 h-3.5"></i>
+        <span>COMPETITION REWARDS</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-5xl md:text-6xl font-black font-cinzel uppercase text-gray-100 leading-tight">
+        THE STAKES ARE HIGH.
+      </h2>
+
+      <!-- Prize Pool Subheading -->
+      <div class="text-xs sm:text-sm font-mono tracking-[0.35em] text-gold-400 uppercase font-bold mt-4">
+        PRIZE POOL
+      </div>
+
+      <!-- Huge Metallic Gold Prize Pool Callout -->
+      <div class="my-4">
+        <div class="text-6xl sm:text-8xl md:text-9xl font-black font-cinzel text-gold-emboss tracking-tight">
+          ₹10K+
+        </div>
+        <div class="text-lg sm:text-2xl font-cinzel tracking-[0.35em] text-gold-gradient uppercase font-bold mt-1">
+          TOTAL CASH & REWARDS WORTH
+        </div>
+      </div>
+
+      <p class="font-cormorant italic text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto mb-12 leading-relaxed">
+        Substantial monetary bounty, prestigious championship honors, and official certificates awarded by PCET's PCCOE Department of Computer Engineering & ACM-W.
+      </p>
+
+      <!-- Centerpiece Visual: Trophy & Official Laurel Medallion from Poster -->
+      <div class="luxury-card p-8 sm:p-10 rounded-2xl border-2 border-gold-500/40 shadow-2xl max-w-3xl mx-auto bg-gradient-to-b from-[#11151f] via-[#080a0e] to-black">
+        <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+          
+          <!-- Trophy Image -->
+          <div class="relative group shrink-0">
+            <div class="absolute -inset-2 rounded-2xl bg-gold-500/30 blur-lg group-hover:bg-gold-500/50 transition-all"></div>
+            <div class="relative rounded-2xl overflow-hidden border-2 border-gold-500/50 shadow-2xl bg-black w-48 sm:w-56 h-auto">
+              <img src="assets/images/trophy.jpg" alt="Wall Street Arena Championship Trophy" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
+            </div>
+          </div>
+
+          <!-- Trophy / Accolades Text -->
+          <div class="text-center md:text-left space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/80 border border-gold-500/40">
+              <img src="assets/images/prize-badge.png" alt="Prize Pool Badge" class="h-6 object-contain" />
+              <span class="text-[11px] font-mono text-gold-300 font-bold uppercase tracking-wider">OFFICIAL EVENT PURSE</span>
+            </div>
+
+            <h3 class="font-cinzel text-xl sm:text-2xl font-bold text-gray-100 uppercase">
+              HIGH-STAKES GLORY & RECOGNITION
+            </h3>
+
+            <p class="text-xs sm:text-sm text-gray-400 font-montserrat leading-relaxed">
+              Syndicates with the highest financial acumen, market strategy, and risk-adjusted portfolio returns will claim the championship trophy, lucrative cash rewards from the ₹10K+ pool, and official merit accreditation.
+            </p>
+
+            <div class="pt-2 flex flex-wrap gap-2 justify-center md:justify-start text-[11px] font-mono text-gray-300">
+              <span class="px-3 py-1 rounded bg-black/60 border border-gold-500/30 text-gold-300">₹10,000+ Prize Pool</span>
+              <span class="px-3 py-1 rounded bg-black/60 border border-white/10">Official Trophy</span>
+              <span class="px-3 py-1 rounded bg-black/60 border border-white/10">Merit Certificates</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================================================================
+       SECTION 7: EVENT DETAILS & LOGISTICS
+       ========================================================================= -->
+  <section id="details" class="relative py-24 px-4 max-w-6xl mx-auto">
+    
+    <div class="text-center mb-16">
+      <div class="text-xs font-mono uppercase tracking-[0.25em] text-gold-400 mb-2">
+        EVENT DOSSIER
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-extrabold font-cinzel uppercase text-gray-100">
+        EVENT DETAILS
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-4"></div>
+      <p class="font-cormorant italic text-lg text-gray-400 mt-2">
+        All logistical coordinates verified and accredited.
+      </p>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      
+      <!-- Date -->
+      <div class="luxury-card p-6 rounded-xl border border-gold-500/25 space-y-3">
+        <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400">
+          <i data-lucide="calendar" class="w-5 h-5"></i>
+        </div>
+        <div class="text-[10px] font-mono uppercase tracking-widest text-gray-400">EVENT DATE</div>
+        <h3 class="text-xl font-bold font-cinzel text-gray-100">10 OCTOBER 2026</h3>
+        <p class="text-xs text-gray-400 font-montserrat">
+          Reporting begins at 09:00 AM IST. Preliminary briefings commence strictly on time.
+        </p>
+      </div>
+
+      <!-- Venue -->
+      <div class="luxury-card p-6 rounded-xl border border-gold-500/25 space-y-3">
+        <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400">
+          <i data-lucide="map-pin" class="w-5 h-5"></i>
+        </div>
+        <div class="text-[10px] font-mono uppercase tracking-widest text-gray-400">EVENT LOCATION</div>
+        <h3 class="text-xl font-bold font-cinzel text-gray-100">LAB 6221L - 6222L</h3>
+        <p class="text-xs text-gray-400 font-montserrat">
+          Department of Computer Engineering, 6th Floor, PCCOE Campus, Sector 26, Pradhikaran, Nigdi, Pune.
+        </p>
+      </div>
+
+      <!-- Mode -->
+      <div class="luxury-card p-6 rounded-xl border border-gold-500/25 space-y-3">
+        <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400">
+          <i data-lucide="monitor" class="w-5 h-5"></i>
+        </div>
+        <div class="text-[10px] font-mono uppercase tracking-widest text-gray-400">COMPETITION MODE</div>
+        <h3 class="text-xl font-bold font-cinzel text-gray-100">HYBRID FORMAT</h3>
+        <p class="text-xs text-gray-400 font-montserrat">
+          Round 1: Online Screening Test.<br>
+          Round 2: Offline Live High-Stakes Trading Simulation.
+        </p>
+      </div>
+
+      <!-- Team Size -->
+      <div class="luxury-card p-6 rounded-xl border border-gold-500/25 space-y-3">
+        <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400">
+          <i data-lucide="users" class="w-5 h-5"></i>
+        </div>
+        <div class="text-[10px] font-mono uppercase tracking-widest text-gray-400">SYNDICATE COMPOSITION</div>
+        <h3 class="text-xl font-bold font-cinzel text-gray-100">2 – 3 MEMBERS</h3>
+        <p class="text-xs text-gray-400 font-montserrat">
+          Form your syndicate with complementary skillsets: mathematical intuition, strategic nerves, and rapid decision execution.
+        </p>
+      </div>
+
+      <!-- Prize Pool -->
+      <div class="luxury-card p-6 rounded-xl border border-gold-500/25 space-y-3">
+        <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400">
+          <i data-lucide="award" class="w-5 h-5"></i>
+        </div>
+        <div class="text-[10px] font-mono uppercase tracking-widest text-gray-400">PURSE WORTH</div>
+        <h3 class="text-xl font-bold font-cinzel text-market-green">₹10,000+ WORTH</h3>
+        <p class="text-xs text-gray-400 font-montserrat">
+          Total prize pool worth ₹10K+ along with official championship trophies, certificates of excellence, and ACM-W recognition.
+        </p>
+
+      </div>
+
+      <!-- Eligibility -->
+      <div class="luxury-card p-6 rounded-xl border border-gold-500/25 space-y-3">
+        <div class="w-10 h-10 rounded-lg bg-amber-500/10 border border-gold-500/30 flex items-center justify-center text-gold-400">
+          <i data-lucide="shield-check" class="w-5 h-5"></i>
+        </div>
+        <div class="text-[10px] font-mono uppercase tracking-widest text-gray-400">ELIGIBILITY</div>
+        <h3 class="text-xl font-bold font-cinzel text-gray-100">ALL TECH STUDENTS</h3>
+        <p class="text-xs text-gray-400 font-montserrat">
+          Open to all undergraduate students interested in algorithmic thinking, business logic, analytics, and markets.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       SECTION 8: REGISTRATION SECTION & TRADER PASS PORTAL
+       ========================================================================= -->
+  <section id="register" class="relative py-24 px-4 bg-gradient-to-b from-obsidian via-[#07090e] to-obsidian border-t border-gold-500/20">
+    
+    <div class="max-w-6xl mx-auto">
+      
+      <!-- Section Title -->
+      <div class="text-center mb-16">
+        <div class="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-widest text-gold-400 uppercase bg-amber-500/10 px-3 py-1 rounded-full border border-gold-500/25 mb-3">
+          <i data-lucide="key" class="w-3.5 h-3.5"></i>
+          <span>FLOOR ACCREDITATION</span>
+        </div>
+        <h2 class="text-3xl sm:text-5xl md:text-6xl font-black font-cinzel uppercase text-gray-100">
+          READY TO ENTER THE MARKET?
+        </h2>
+        <p class="font-cormorant italic text-xl text-gray-300 mt-2">
+          Gather your team. Read the market. Make your move.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        
+        <!-- Left Column: Poster QR Code & Scan Option (5 cols) -->
+        <div class="lg:col-span-5 text-center flex flex-col items-center">
+          
+          <div class="luxury-card p-6 rounded-2xl border-2 border-gold-500/40 shadow-2xl max-w-sm w-full relative">
+            
+            <div class="text-xs font-mono tracking-widest uppercase text-gold-400 font-bold mb-3 flex items-center justify-center gap-1.5">
+              <i data-lucide="scan" class="w-4 h-4"></i>
+              <span>SCAN TO REGISTER</span>
+            </div>
+
+            <!-- Authentic Framed QR Code from Poster -->
+            <div class="relative p-2 bg-black rounded-xl border border-gold-500/30 inline-block shadow-inner">
+              <img src="assets/images/qr-framed.png" alt="Scan to register QR Code" class="w-56 h-auto mx-auto object-contain rounded-lg filter drop-shadow-[0_0_10px_rgba(212,175,55,0.2)]" />
+            </div>
+
+            <p class="text-xs text-gray-400 font-montserrat mt-4 leading-relaxed">
+              Scan with Google Lens / Camera or register directly using the official syndicate form on the right.
+            </p>
+
+            <div class="mt-4 pt-4 border-t border-gold-500/20 text-xs font-mono text-gray-400 flex items-center justify-between">
+              <span>TEAM SIZE: 2-3 MEMBERS</span>
+              <span class="text-market-green font-bold">SLOTS LIMITED</span>
+            </div>
+
+          </div>
+
+          <!-- Official Coordinators Contact Box -->
+          <div class="mt-6 p-4 rounded-xl bg-black/60 border border-gold-500/30 max-w-sm w-full font-mono text-xs text-left space-y-2">
+            <div class="text-[10px] text-gold-400 tracking-wider uppercase font-bold">
+              EVENT STUDENT COORDINATORS
+            </div>
+            <div class="flex items-center justify-between text-gray-200">
+              <span>Sanchita Sakhare:</span>
+              <a href="tel:9822799225" class="text-gold-300 hover:underline flex items-center gap-1">
+                <i data-lucide="phone" class="w-3 h-3 text-gold-400"></i> 9822799225
+              </a>
+            </div>
+            <div class="flex items-center justify-between text-gray-200">
+              <span>Shivani Vibhute:</span>
+              <a href="tel:9226853657" class="text-gold-300 hover:underline flex items-center gap-1">
+                <i data-lucide="phone" class="w-3 h-3 text-gold-400"></i> 9226853657
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Interactive Registration Form (7 cols) -->
+        <div class="lg:col-span-7">
+          
+          <div class="luxury-card p-6 sm:p-8 rounded-2xl border-2 border-gold-500/35 shadow-2xl relative">
+            
+            <div class="mb-6 pb-4 border-b border-gold-500/20 flex items-center justify-between">
+              <div>
+                <h3 class="font-cinzel text-xl font-bold text-gray-100 uppercase">
+                  SYNDICATE ACCREDITATION FORM
+                </h3>
+                <p class="text-xs text-gray-400 font-mono mt-0.5">
+                  Submit details to generate your official Wall Street Arena pass.
+                </p>
+              </div>
+              <span class="text-xs font-mono px-2.5 py-1 rounded bg-amber-500/10 border border-gold-500/30 text-gold-300 font-bold">
+                2-3 MEMBERS
+              </span>
+            </div>
+
+            <form id="registration-form" class="space-y-4 font-montserrat text-xs">
+              
+              <!-- Syndicate (Team) Name -->
+              <div>
+                <label class="block text-gray-300 font-mono text-[11px] uppercase tracking-wider mb-1">
+                  SYNDICATE / TEAM NAME *
+                </label>
+                <input type="text" id="reg-team-name" required placeholder="e.g. Apex Arbitrage, Quantitative Bulls" class="w-full px-4 py-2.5 rounded-lg border focus:ring-1 focus:ring-gold-400 text-sm">
+              </div>
+
+              <!-- Leader Details -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-gray-300 font-mono text-[11px] uppercase tracking-wider mb-1">
+                    LEAD TRADER (NAME) *
+                  </label>
+                  <input type="text" id="reg-lead-name" required placeholder="Full Name" class="w-full px-4 py-2.5 rounded-lg border focus:ring-1 focus:ring-gold-400 text-sm">
+                </div>
+                <div>
+                  <label class="block text-gray-300 font-mono text-[11px] uppercase tracking-wider mb-1">
+                    LEAD EMAIL *
+                  </label>
+                  <input type="email" id="reg-lead-email" required placeholder="name@college.edu" class="w-full px-4 py-2.5 rounded-lg border focus:ring-1 focus:ring-gold-400 text-sm">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-gray-300 font-mono text-[11px] uppercase tracking-wider mb-1">
+                    CONTACT NUMBER (WHATSAPP) *
+                  </label>
+                  <input type="tel" id="reg-lead-phone" required placeholder="10-digit mobile number" class="w-full px-4 py-2.5 rounded-lg border focus:ring-1 focus:ring-gold-400 text-sm">
+                </div>
+                <div>
+                  <label class="block text-gray-300 font-mono text-[11px] uppercase tracking-wider mb-1">
+                    COLLEGE / INSTITUTION *
+                  </label>
+                  <input type="text" id="reg-college" required placeholder="PCCOE Pune / Other" class="w-full px-4 py-2.5 rounded-lg border focus:ring-1 focus:ring-gold-400 text-sm">
+                </div>
+              </div>
+
+              <!-- Additional Members -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-gray-300 font-mono text-[11px] uppercase tracking-wider mb-1">
+                    TRADER 2 (NAME) *
+                  </label>
+                  <input type="text" id="reg-member-2" required placeholder="Full Name" class="w-full px-4 py-2.5 rounded-lg border focus:ring-1 focus:ring-gold-400 text-sm">
+                </div>
+                <div>
+                  <label class="block text-gray-300 font-mono text-[11px] uppercase tracking-wider mb-1">
+                    TRADER 3 (OPTIONAL)
+                  </label>
+                  <input type="text" id="reg-member-3" placeholder="Leave blank if 2-member team" class="w-full px-4 py-2.5 rounded-lg border focus:ring-1 focus:ring-gold-400 text-sm">
+                </div>
+              </div>
+
+              <!-- Experience Level -->
+              <div>
+                <label class="block text-gray-300 font-mono text-[11px] uppercase tracking-wider mb-1">
+                  PRIOR TRADING / QUANT EXPERIENCE
+                </label>
+                <select id="reg-experience" class="w-full px-4 py-2.5 rounded-lg border focus:ring-1 focus:ring-gold-400 text-sm">
+                  <option value="beginner">Beginner — Excited to learn the mechanics</option>
+                  <option value="intermediate">Intermediate — Familiar with charts, stocks & logic</option>
+                  <option value="advanced">Advanced — Active paper or live equity trader</option>
+                </select>
+              </div>
+
+              <!-- Submit Button -->
+              <div class="pt-3">
+                <button type="submit" class="btn-gold-solid w-full py-3.5 rounded-lg font-montserrat text-sm font-bold tracking-widest uppercase flex items-center justify-center gap-2 shadow-xl">
+                  <span>CONFIRM REGISTRATION & ISSUE TRADER PASS</span>
+                  <i data-lucide="check-circle" class="w-4 h-4 text-black"></i>
+                </button>
+              </div>
+
+              <div class="text-[10px] text-gray-400 font-mono text-center pt-2">
+                Registration details are submitted directly to the PCCOE Computer Engineering Department & ACM-W coordinating desk.
+              </div>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       SECTION 9: OFFICIAL POSTER EXHIBIT & HIGH-RES VIEWER
+       ========================================================================= -->
+  <section class="relative py-20 px-4 max-w-5xl mx-auto text-center">
+    
+    <div class="luxury-card p-8 rounded-2xl border border-gold-500/30 flex flex-col md:flex-row items-center justify-between gap-6">
+      
+      <div class="text-left space-y-2">
+        <div class="text-xs font-mono text-gold-400 uppercase tracking-widest font-bold">
+          OFFICIAL EVENT ASSET
+        </div>
+        <h3 class="text-2xl font-bold font-cinzel text-gray-100 uppercase">
+          EVENT POSTER & BULLETIN
+        </h3>
+        <p class="text-xs text-gray-400 font-montserrat max-w-md">
+          Inspect the official design, logos, coordinators, and instructions as released by PCET's PCCOE ACM-W chapter.
+        </p>
+      </div>
+
+      <div class="flex items-center gap-4 shrink-0">
+        <button class="open-poster-modal btn-gold-luxury px-6 py-3 rounded-lg font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+          <i data-lucide="maximize" class="w-4 h-4 text-gold-400"></i>
+          <span>VIEW FULL POSTER</span>
+        </button>
+        <a href="assets/images/poster.jpg" download="Wall-Street-Arena-Poster.jpg" class="btn-gold-outline px-5 py-3 rounded-lg font-mono text-xs font-bold uppercase tracking-wider flex items-center gap-2">
+          <i data-lucide="download" class="w-4 h-4 text-gold-400"></i>
+          <span>SAVE IMAGE</span>
+        </a>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       SECTION 10: FREQUENTLY ASKED QUESTIONS (FAQ)
+       ========================================================================= -->
+  <section id="faq" class="relative py-24 px-4 max-w-4xl mx-auto">
+    
+    <div class="text-center mb-16">
+      <div class="text-xs font-mono uppercase tracking-[0.25em] text-gold-400 mb-2">
+        INFORMATION DESK
+      </div>
+      <h2 class="text-3xl sm:text-5xl font-extrabold font-cinzel uppercase text-gray-100">
+        FREQUENTLY ASKED QUESTIONS
+      </h2>
+      <div class="w-24 h-1 bg-gradient-to-r from-transparent via-gold-500 to-transparent mx-auto mt-4"></div>
+    </div>
+
+    <div class="space-y-4">
+      
+      <div class="faq-item luxury-card rounded-xl border border-gold-500/25 overflow-hidden">
+        <button class="faq-trigger w-full p-5 text-left flex items-center justify-between font-cinzel font-bold text-sm sm:text-base text-gray-200 hover:text-gold-300 transition-colors">
+          <span>DO WE NEED REAL MONEY OR REAL TRADING ACCOUNTS?</span>
+          <i data-lucide="chevron-down" class="faq-icon w-4 h-4 text-gold-400 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer hidden px-5 pb-5 text-xs text-gray-400 font-montserrat leading-relaxed border-t border-gold-500/10 pt-3">
+          No! All trading in Round 2 is executed in a high-fidelity simulated trading environment using virtual portfolio capital. Zero personal capital is risked, while the winning cash rewards are 100% real!
+        </div>
+      </div>
+
+      <div class="faq-item luxury-card rounded-xl border border-gold-500/25 overflow-hidden">
+        <button class="faq-trigger w-full p-5 text-left flex items-center justify-between font-cinzel font-bold text-sm sm:text-base text-gray-200 hover:text-gold-300 transition-colors">
+          <span>WHO CAN PARTICIPATE? CAN WE FORM CROSS-COLLEGE TEAMS?</span>
+          <i data-lucide="chevron-down" class="faq-icon w-4 h-4 text-gold-400 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer hidden px-5 pb-5 text-xs text-gray-400 font-montserrat leading-relaxed border-t border-gold-500/10 pt-3">
+          Students from all engineering, technology, and management branches across recognized universities and colleges are welcome. Teams of 2 or 3 members may comprise students from different academic years or departments.
+        </div>
+      </div>
+
+      <div class="faq-item luxury-card rounded-xl border border-gold-500/25 overflow-hidden">
+        <button class="faq-trigger w-full p-5 text-left flex items-center justify-between font-cinzel font-bold text-sm sm:text-base text-gray-200 hover:text-gold-300 transition-colors">
+          <span>WHAT TOPICS ARE COVERED IN ROUND 1 (ONLINE APTITUDE)?</span>
+          <i data-lucide="chevron-down" class="faq-icon w-4 h-4 text-gold-400 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer hidden px-5 pb-5 text-xs text-gray-400 font-montserrat leading-relaxed border-t border-gold-500/10 pt-3">
+          Round 1 focuses on quantitative aptitude, logical reasoning, numerical patterns, probability, basic macroeconomic principles, and analytical deduction. It is designed to evaluate raw problem-solving speed and strategic logic.
+        </div>
+      </div>
+
+      <div class="faq-item luxury-card rounded-xl border border-gold-500/25 overflow-hidden">
+        <button class="faq-trigger w-full p-5 text-left flex items-center justify-between font-cinzel font-bold text-sm sm:text-base text-gray-200 hover:text-gold-300 transition-colors">
+          <span>WHAT HARDWARE OR EQUIPMENT DO WE NEED FOR ROUND 2?</span>
+          <i data-lucide="chevron-down" class="faq-icon w-4 h-4 text-gold-400 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer hidden px-5 pb-5 text-xs text-gray-400 font-montserrat leading-relaxed border-t border-gold-500/10 pt-3">
+          Round 2 is conducted at PCCOE Lab 6221L - 6222L on pre-configured high-speed workstations with dedicated LAN connectivity. Teams may also carry personal laptops as backup if permitted by coordinating faculty.
+        </div>
+      </div>
+
+      <div class="faq-item luxury-card rounded-xl border border-gold-500/25 overflow-hidden">
+        <button class="faq-trigger w-full p-5 text-left flex items-center justify-between font-cinzel font-bold text-sm sm:text-base text-gray-200 hover:text-gold-300 transition-colors">
+          <span>HOW IS THE WINNING SYNDICATE DECIDED?</span>
+          <i data-lucide="chevron-down" class="faq-icon w-4 h-4 text-gold-400 transition-transform duration-300"></i>
+        </button>
+        <div class="faq-answer hidden px-5 pb-5 text-xs text-gray-400 font-montserrat leading-relaxed border-t border-gold-500/10 pt-3">
+          Winning syndicates are evaluated by their cumulative portfolio valuation (P&L), risk-adjusted Sharpe performance, adherence to risk limits, and strategic execution during unexpected breaking news market shocks.
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================================================
+       SECTION 11: ORGANIZERS & FOOTER
+       ========================================================================= -->
+  <footer class="relative bg-[#030406] border-t border-gold-500/25 pt-16 pb-12 px-4">
+    
+    <div class="max-w-7xl mx-auto">
+      
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-gold-500/15">
+        
+        <!-- Left: Department & Chapter Info (5 cols) -->
+        <div class="md:col-span-5 space-y-4">
+          <div class="flex items-center gap-3">
+            <img src="assets/images/pccoe-logo.png" alt="PCCOE Logo" class="h-10 object-contain" />
+            <img src="assets/images/acmw-logo.png" alt="ACM-W PCCOE" class="h-9 object-contain" />
+            <img src="assets/images/cesa-logo.png" alt="CESA Logo" class="h-8 object-contain" />
+          </div>
+          <div class="font-cinzel text-lg font-bold text-gold-300">
+            WALL STREET ARENA 2026
+          </div>
+          <p class="text-xs text-gray-400 font-montserrat leading-relaxed max-w-sm">
+            PCET's Pimpri Chinchwad College of Engineering<br>
+            Department of Computer Engineering<br>
+            Sector 26, Pradhikaran, Nigdi, Pune, Maharashtra 411044
+          </p>
+          <div class="text-[11px] font-mono text-gold-400/80">
+            IN ASSOCIATION WITH ACM-W PCCOE & CESA
+          </div>
+        </div>
+
+        <!-- Center: Quick Nav (3 cols) -->
+        <div class="md:col-span-3 space-y-3 font-montserrat text-xs">
+          <div class="font-mono text-gold-400 uppercase tracking-widest text-[11px] font-bold">
+            QUICK NAVIGATION
+          </div>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="#hero" class="hover:text-gold-300 transition-colors">Home Page</a></li>
+            <li><a href="#arena" class="hover:text-gold-300 transition-colors">About The Arena</a></li>
+            <li><a href="#format" class="hover:text-gold-300 transition-colors">Battle Rounds (1 & 2)</a></li>
+            <li><a href="#terminal" class="hover:text-gold-300 transition-colors">Trading Terminal Desk</a></li>
+            <li><a href="#stakes" class="hover:text-gold-300 transition-colors">₹10K+ Stakes & Prizes</a></li>
+            <li><a href="#register" class="hover:text-gold-300 transition-colors">Syndicate Registration</a></li>
+          </ul>
+        </div>
+
+        <!-- Right: Official Contact Coordinators (4 cols) -->
+        <div class="md:col-span-4 space-y-3 font-mono text-xs">
+          <div class="text-gold-400 uppercase tracking-widest text-[11px] font-bold">
+            STUDENT ORGANIZING DESK
+          </div>
+          <p class="text-gray-400 text-[11px] font-montserrat">
+            For registration queries, rules clarification, or syndicate assistance, contact the student leads:
+          </p>
+          <div class="space-y-2 pt-1">
+            <div class="p-2.5 rounded bg-black/60 border border-white/5 flex items-center justify-between">
+              <div>
+                <div class="text-gray-200 font-bold">Sanchita Sakhare</div>
+                <div class="text-[10px] text-gray-400">Student Coordinator</div>
+              </div>
+              <a href="tel:9822799225" class="text-market-green font-bold hover:underline flex items-center gap-1">
+                <i data-lucide="phone" class="w-3 h-3"></i> 9822799225
+              </a>
+            </div>
+
+            <div class="p-2.5 rounded bg-black/60 border border-white/5 flex items-center justify-between">
+              <div>
+                <div class="text-gray-200 font-bold">Shivani Vibhute</div>
+                <div class="text-[10px] text-gray-400">Student Coordinator</div>
+              </div>
+              <a href="tel:9226853657" class="text-market-green font-bold hover:underline flex items-center gap-1">
+                <i data-lucide="phone" class="w-3 h-3"></i> 9226853657
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-gray-500">
+        <div>
+          © 2026 WALL STREET ARENA. PCET's PCCOE Department of Computer Engineering.
+        </div>
+        <div class="flex items-center gap-4 text-[11px]">
+          <span>HIGH STAKES</span>
+          <span>•</span>
+          <span>HIGH DISCIPLINE</span>
+          <span>•</span>
+          <span class="text-gold-400 font-bold">ALPHA GUARANTEED</span>
+        </div>
+      </div>
+
+    </div>
+
+  </footer>
+
+  <!-- =========================================================================
+       MODAL 1: ACCREDITED TRADER PASS (Post-Registration Ticket)
+       ========================================================================= -->
+  <div id="ticket-modal" class="fixed inset-0 z-50 hidden modal-backdrop items-center justify-center p-4">
+    <div class="relative w-full max-w-lg trader-pass p-6 sm:p-8 rounded-2xl">
+      
+      <!-- Ticket Notches -->
+      <div class="trader-pass-notch-left"></div>
+      <div class="trader-pass-notch-right"></div>
+
+      <!-- Ticket Header -->
+      <div class="flex items-center justify-between border-b border-gold-500/30 pb-4 mb-4">
+        <div>
+          <span class="text-[9px] font-mono tracking-widest text-gold-400 uppercase">OFFICIAL TRADER CREDENTIAL</span>
+          <h4 class="font-cinzel font-bold text-lg text-gray-100 uppercase">WALL STREET ARENA</h4>
+        </div>
+        <img src="assets/images/prize-badge.png" alt="Badge" class="h-10 object-contain" />
+      </div>
+
+      <!-- Ticket Body -->
+      <div class="space-y-4 font-mono text-xs">
+        
+        <div class="bg-black/60 p-3 rounded-lg border border-gold-500/20">
+          <div class="text-[10px] text-gray-400 uppercase">ACCREDITED SYNDICATE</div>
+          <div id="pass-syndicate-name" class="font-cinzel font-black text-xl text-gold-300 uppercase mt-0.5 tracking-wider">
+            QUANTITATIVE BULLS
+          </div>
+          <div class="text-[11px] text-gray-400 mt-1">
+            REG ID: <span id="pass-syndicate-id" class="text-market-green font-bold">WSA-2026-8492</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3">
+          <div class="bg-black/40 p-2.5 rounded border border-white/5">
+            <div class="text-[9px] text-gray-400 uppercase">LEAD TRADER</div>
+            <div id="pass-leader-name" class="font-bold text-gray-200 mt-0.5">Alex Morgan</div>
+          </div>
+          <div class="bg-black/40 p-2.5 rounded border border-white/5">
+            <div class="text-[9px] text-gray-400 uppercase">COLLEGE</div>
+            <div id="pass-college" class="font-bold text-gray-200 mt-0.5">PCCOE Pune</div>
+          </div>
+        </div>
+
+        <div class="bg-black/40 p-2.5 rounded border border-white/5">
+          <div class="text-[9px] text-gray-400 uppercase">SYNDICATE ROSTER</div>
+          <div id="pass-members" class="text-gray-300 mt-0.5 text-[11px]">Alex Morgan, Sarah Connor, Bruce Wayne</div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 text-center text-[10px]">
+          <div class="p-2 bg-black/40 rounded border border-white/5">
+            <div class="text-gray-400">VENUE</div>
+            <div class="font-bold text-gold-300">LAB 6221L-22L</div>
+          </div>
+          <div class="p-2 bg-black/40 rounded border border-white/5">
+            <div class="text-gray-400">DATE</div>
+            <div class="font-bold text-gold-300">10 OCT 2026</div>
+          </div>
+          <div class="p-2 bg-black/40 rounded border border-white/5">
+            <div class="text-gray-400">ISSUED</div>
+            <div id="pass-timestamp" class="font-bold text-gray-300">TODAY</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mt-6 pt-4 border-t border-gold-500/20 flex items-center justify-between gap-3 font-montserrat">
+        <button id="btn-print-pass" class="btn-gold-solid flex-1 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5">
+          <i data-lucide="printer" class="w-4 h-4 text-black"></i>
+          <span>PRINT / SAVE PASS</span>
+        </button>
+        <button id="btn-close-ticket-modal" class="btn-gold-outline px-4 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider">
+          DISMISS
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       MODAL 2: OFFICIAL POSTER HIGH-RES LIGHTBOX
+       ========================================================================= -->
+  <div id="poster-modal" class="fixed inset-0 z-50 hidden modal-backdrop items-center justify-center p-4">
+    <div class="relative max-w-2xl w-full max-h-[90vh] bg-black/95 rounded-2xl border-2 border-gold-500/50 shadow-2xl p-4 flex flex-col items-center">
+      
+      <button id="close-poster-modal" class="absolute top-3 right-3 z-10 w-9 h-9 rounded-full bg-black/80 border border-gold-500/50 text-gold-400 hover:text-white flex items-center justify-center">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="w-full text-center pb-2 border-b border-gold-500/20 mb-2 font-cinzel text-xs font-bold tracking-wider text-gold-300">
+        OFFICIAL EVENT POSTER • PCET'S PCCOE
+      </div>
+
+      <div class="overflow-y-auto max-h-[75vh] w-full flex justify-center">
+        <img src="assets/images/poster.jpg" alt="Official Wall Street Arena Poster" class="max-w-full h-auto rounded-lg shadow-2xl object-contain" />
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Lucide Icon Renderer Initialization -->
+  <script>
+    lucide.createIcons();
+  </script>
+
+  <!-- Project Main JS -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
